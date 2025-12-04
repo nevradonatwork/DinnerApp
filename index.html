@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0d1b2a">
-    <title>Dinner Recipe Generator</title>
-    <!-- Link to the web app manifest for PWA support -->
-    <link rel="manifest" href="manifest.json">
-    <!-- Link to the stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dinner Recipe Generator</title>
+
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="manifest" href="./manifest.json" />
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="apple-touch-icon" href="./icons/dinner-icon-192.png" />
 </head>
+
 <body>
-    <header class="hero">
-        <h1>Dinner Recipe Generator</h1>
-        <p class="tagline">Get a complete dinner with carbs, protein, and salad</p>
-    </header>
+  <header class="header">
+    <h1>Dinner Recipe Generator</h1>
+    <p>Get a complete dinner with carbs, protein, and salad</p>
+  </header>
 
-    <main>
-        <section class="preferences">
-            <h2 class="subtitle">Select your dietary preference:</h2>
-            <div class="diet-options" id="dietOptions">
-                <!-- The buttons are ordered so that No Restrictions is first and active by default -->
-                <button class="diet-button active" data-diet="no restrictions">No Restrictions</button>
-                <button class="diet-button" data-diet="pescetarian">Pescetarian</button>
-                <button class="diet-button" data-diet="vegetarian">Vegetarian</button>
-                <button class="diet-button" data-diet="vegan">Vegan</button>
-                <button class="diet-button" data-diet="gluten-free">Gluten‑Free</button>
-                <button class="diet-button" data-diet="keto">Keto</button>
-            </div>
-        </section>
+  <section class="filters">
+    <h2>Select your dietary preference:</h2>
 
-        <section class="generate-container">
-            <button id="generateButton" class="generate-button">🍴 Generate Recipe</button>
-        </section>
+    <div class="filter-buttons">
+      <button class="filter active" data-filter="none">No Restrictions</button>
+      <button class="filter" data-filter="pescetarian">Pescetarian</button>
+      <button class="filter" data-filter="vegetarian">Vegetarian</button>
+      <button class="filter" data-filter="vegan">Vegan</button>
+      <button class="filter" data-filter="glutenfree">Gluten-Free</button>
+      <button class="filter" data-filter="keto">Keto</button>
+    </div>
 
-        <section id="recipeSection" class="recipes-section hidden">
-            <h2 id="dinnerTitle" class="dinner-title"></h2>
-            <div id="recipesContainer" class="recipes-container"></div>
-        </section>
-    </main>
+    <button id="generateBtn" class="generate-btn">
+      🍽 Generate Recipe
+    </button>
+  </section>
 
-    <!-- Link to the script -->
-    <script src="script.js" defer></script>
+  <section id="result" class="result hidden">
+    <h2>Your Dinner</h2>
+
+    <div class="meal-block">
+      <img id="carbImg" class="meal-img" />
+      <p id="carbText" class="meal-text"></p>
+    </div>
+
+    <div class="meal-block">
+      <img id="proteinImg" class="meal-img" />
+      <p id="proteinText" class="meal-text"></p>
+    </div>
+
+    <div class="meal-block">
+      <img id="saladImg" class="meal-img" />
+      <p id="saladText" class="meal-text"></p>
+    </div>
+
+    <p id="recipeDescription" class="recipe-description"></p>
+  </section>
+
+  <script src="./script.js"></script>
 </body>
 </html>
