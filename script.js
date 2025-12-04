@@ -60,6 +60,15 @@ function setupUi() {
 
   document.getElementById("generateBtn").addEventListener("click", generateDinner);
 }
+function getRandomFoodImage() {
+  const seed = Math.floor(Math.random() * 10000);
+  return `https://static.photos/food/640x360/${seed}`;
+}
+
+// Dinner oluştururken
+document.getElementById("carbImg").src = getRandomFoodImage();
+document.getElementById("proteinImg").src = getRandomFoodImage();
+document.getElementById("saladImg").src = getRandomFoodImage();
 
 // Tarif üretimi
 function generateDinner() {
