@@ -1,5 +1,5 @@
 //-------------------------------------
-// DATA SETS
+// Veritabanları
 //-------------------------------------
 
 const carbs = [
@@ -28,8 +28,8 @@ const styles = [
   "comfort food twist",
   "quick weeknight version",
   "fresh and vibrant approach",
-  "one-pan simplified version",
-  "15-minute express dinner"
+  "one‑pan simplified version",
+  "15‑minute express dinner"
 ];
 
 const sauces = [
@@ -41,6 +41,7 @@ const sauces = [
   "olive oil and lemon"
 ];
 
+// Yardımcı fonksiyonlar
 function pick(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -57,21 +58,17 @@ function setupUi() {
     });
   });
 
-  const generateBtn = document.getElementById("generateBtn");
-  if (!generateBtn) {
-    console.error("generateBtn not found in DOM");
-    return;
-  }
-  generateBtn.addEventListener("click", generateDinner);
+  document.getElementById("generateBtn").addEventListener("click", generateDinner);
 }
 
+// Tarif üretimi
 function generateDinner() {
   let filteredProteins = proteins;
   let filteredCarbs = carbs;
 
   if (selectedFilter === "vegan") {
     filteredProteins = proteins.filter(p => p.vegan);
-    filteredCarbs = carbs.filter(c => c.keto || c.glutenfree); // sebze ağırlıklı
+    filteredCarbs = carbs.filter(c => c.keto || c.glutenfree);
   } else if (selectedFilter === "vegetarian") {
     filteredProteins = proteins.filter(p => p.vegan || p.vegetarian);
   } else if (selectedFilter === "pescetarian") {
@@ -102,12 +99,10 @@ function generateDinner() {
   document.getElementById("result").classList.remove("hidden");
 }
 
-// DOM yüklendiğinde bütün eventleri bağla
-document.addEventListener("DOMContentLoaded", () => {
-  setupUi();
-});
+// Başlatma
+document.addEventListener("DOMContentLoaded", setupUi);
 
-// Service worker
+// Service worker kaydı
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./service-worker.js");

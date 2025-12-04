@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dinner Recipe Generator</title>
 
+  <!-- Doğru dosya adıyla göreli CSS -->
   <link rel="stylesheet" href="./style.css" />
+  <!-- Manifest ve PWA ikon referansları -->
   <link rel="manifest" href="./manifest.json" />
-
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <link rel="apple-touch-icon" href="./icons/dinner-icon-192.png" />
@@ -21,43 +22,34 @@
 
   <section class="filters">
     <h2>Select your dietary preference:</h2>
-
     <div class="filter-buttons">
       <button class="filter active" data-filter="none">No Restrictions</button>
       <button class="filter" data-filter="pescetarian">Pescetarian</button>
       <button class="filter" data-filter="vegetarian">Vegetarian</button>
       <button class="filter" data-filter="vegan">Vegan</button>
-      <button class="filter" data-filter="glutenfree">Gluten-Free</button>
+      <button class="filter" data-filter="glutenfree">Gluten‑Free</button>
       <button class="filter" data-filter="keto">Keto</button>
     </div>
-
-    <button id="generateBtn" class="generate-btn">
-      🍽 Generate Recipe
-    </button>
+    <button id="generateBtn" class="generate-btn">🍽 Generate Recipe</button>
   </section>
 
   <section id="result" class="result hidden">
     <h2>Your Dinner</h2>
-
     <div class="meal-block">
       <img id="carbImg" class="meal-img" alt="Carb" />
       <p id="carbText" class="meal-text"></p>
     </div>
-
     <div class="meal-block">
       <img id="proteinImg" class="meal-img" alt="Protein" />
       <p id="proteinText" class="meal-text"></p>
     </div>
-
     <div class="meal-block">
       <img id="saladImg" class="meal-img" alt="Salad" />
       <p id="saladText" class="meal-text"></p>
     </div>
-
     <p id="recipeDescription" class="recipe-description"></p>
   </section>
 
-  <!-- ÖNEMLİ . script’i body kapanmadan hemen önce yükle -->
   <script src="./script.js"></script>
 </body>
 </html>
