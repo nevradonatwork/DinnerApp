@@ -11,36 +11,38 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="hero">
-        <h1>Dinner Recipe Generator</h1>
-        <p class="tagline">Get a complete dinner with carbs, protein, and salad</p>
+  <div class="app">
+    <header>
+      <h1>DinnerApp</h1>
+      <p>Let me pick your dinner for tonight.</p>
     </header>
 
     <main>
-        <section class="preferences">
-            <h2 class="subtitle">Select your dietary preference:</h2>
-            <div class="diet-options" id="dietOptions">
-                <!-- The buttons are ordered so that No Restrictions is first and active by default -->
-                <button class="diet-button active" data-diet="no restrictions">No Restrictions</button>
-                <button class="diet-button" data-diet="pescetarian">Pescetarian</button>
-                <button class="diet-button" data-diet="vegetarian">Vegetarian</button>
-                <button class="diet-button" data-diet="vegan">Vegan</button>
-                <button class="diet-button" data-diet="gluten-free">Gluten‑Free</button>
-                <button class="diet-button" data-diet="keto">Keto</button>
-            </div>
-        </section>
+      <button id="generateBtn">Give me a dinner</button>
 
-        <section class="generate-container">
-            <button id="generateButton" class="generate-button">🍴 Generate Recipe</button>
-        </section>
+      <section id="result">
+        <article class="meal">
+          <h2>Carb</h2>
+          <img id="carbImg" alt="Carb" />
+          <p id="carbText"></p>
+        </article>
 
-        <section id="recipeSection" class="recipes-section hidden">
-            <h2 id="dinnerTitle" class="dinner-title"></h2>
-            <div id="recipesContainer" class="recipes-container"></div>
-        </section>
+        <article class="meal">
+          <h2>Protein</h2>
+          <img id="proteinImg" alt="Protein" />
+          <p id="proteinText"></p>
+        </article>
+
+        <article class="meal">
+          <h2>Salad</h2>
+          <img id="saladImg" alt="Salad" />
+          <p id="saladText"></p>
+        </article>
+
+        <div id="recipeName" class="recipe-name"></div>
+      </section>
     </main>
+  </div>
 
-    <!-- Link to the script -->
-    <script src="script.js" defer></script>
-</body>
-</html>
+  <script src="./script.js"></script>
+</body></html>
