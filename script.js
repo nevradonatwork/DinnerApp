@@ -38,38 +38,45 @@ const sauces = [
   "soy ginger glaze",
   "herb butter",
   "basil pesto",
-  "olive oil & lemon"
+  "olive oil and lemon"
 ];
 
-//-------------------------------------
 function pick(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
 let selectedFilter = "none";
 
-document.querySelectorAll(".filter").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    selectedFilter = btn.dataset.filter;
+function setupUi() {
+  const filterButtons = document.querySelectorAll(".filter");
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedFilter = btn.dataset.filter;
+    });
   });
-});
 
-//-------------------------------------
+  const generateBtn = document.getElementById("generateBtn");
+  if (!generateBtn) {
+    console.error("generateBtn not found in DOM");
+    return;
+  }
+  generateBtn.addEventListener("click", generateDinner);
+}
+
 function generateDinner() {
   let filteredProteins = proteins;
+  let filteredCarbs = carbs;
 
   if (selectedFilter === "vegan") {
     filteredProteins = proteins.filter(p => p.vegan);
+    filteredCarbs = carbs.filter(c => c.keto || c.glutenfree); // sebze ağırlıklı
   } else if (selectedFilter === "vegetarian") {
     filteredProteins = proteins.filter(p => p.vegan || p.vegetarian);
   } else if (selectedFilter === "pescetarian") {
     filteredProteins = proteins.filter(p => p.pescetarian);
-  }
-
-  let filteredCarbs = carbs;
-  if (selectedFilter === "glutenfree") {
+  } else if (selectedFilter === "glutenfree") {
     filteredCarbs = carbs.filter(c => c.glutenfree);
   } else if (selectedFilter === "keto") {
     filteredCarbs = carbs.filter(c => c.keto);
@@ -95,10 +102,12 @@ function generateDinner() {
   document.getElementById("result").classList.remove("hidden");
 }
 
-//-------------------------------------
-document.getElementById("generateBtn").addEventListener("click", generateDinner);
+// DOM yüklendiğinde bütün eventleri bağla
+document.addEventListener("DOMContentLoaded", () => {
+  setupUi();
+});
 
-//-------------------------------------
+// Service worker
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./service-worker.js");
